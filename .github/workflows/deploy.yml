@@ -17,7 +17,7 @@ jobs:
       - name: Add build time to site config
         run: |
           # 获取当前时间并格式化为可读字符串
-          BUILD_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+          BUILD_TIME=$(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S UTC+8')
           # 使用 sed 命令替换 subtitle，在原有内容后添加构建时间
           sed -i "s|subtitle: \"CHANGE_IN_DEPLOY.YML\"|subtitle: \"Built at $BUILD_TIME\"|" ./src/config.ts       
           # 如果 siteConfig.ts 不在根目录，请修改上面的路径
